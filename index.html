@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Liza Estética · Catálogo</title>
+<meta name="theme-color" content="#FEFAF6">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--k:#A67C68;--k2:#8E6655;--n:#DFCEC5;--n2:#EFE4DE;--bg:#FEFAF6;--t:#5E463B;--w:#fff}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{background:var(--bg);color:var(--t);font-family:Montserrat,system-ui,sans-serif}
+body{min-height:100vh;overflow-x:hidden}
+body::before{content:"";position:fixed;top:-120px;right:-120px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(166,124,104,.22),rgba(166,124,104,0) 70%);pointer-events:none;z-index:0}
+.wrap{max-width:520px;margin:0 auto;padding:28px 20px 120px;position:relative;z-index:1}
+.brand{display:flex;flex-direction:column;align-items:flex-start}
+.brand .liza{font-weight:800;font-size:58px;line-height:.9;color:var(--k);letter-spacing:-2px;position:relative}
+.brand .liza::after{content:"";position:absolute;right:-12px;top:4px;width:9px;height:9px;border-radius:50%;background:var(--k)}
+.brand .est{font-weight:300;font-size:22px;letter-spacing:10px;color:var(--k);margin-top:4px}
+.pill{display:inline-block;border:1.5px solid var(--k);color:var(--k);border-radius:40px;padding:7px 16px;font-size:10px;letter-spacing:3px;font-weight:500}
+
+/* GATE */
+#gate{position:fixed;inset:0;background:var(--bg);z-index:50;overflow:auto;display:flex;align-items:center}
+#gate .wrap{padding-bottom:40px;width:100%}
+.logo-mask{width:120px;height:91px;background:var(--k);-webkit-mask:url(logo.png) center/contain no-repeat;mask:url(logo.png) center/contain no-repeat;margin:0 auto 18px}
+.gate-card{background:var(--w);border-radius:26px;padding:28px 22px;box-shadow:0 18px 40px -20px rgba(94,70,59,.35);margin-top:26px}
+.gate-card h2{font-size:21px;font-weight:700;color:var(--k);line-height:1.25}
+.gate-card p{font-size:13.5px;line-height:1.55;margin:10px 0 20px;color:#7d655a}
+label.f{display:block;font-size:10.5px;letter-spacing:2.5px;font-weight:600;color:var(--k);margin:14px 0 7px}
+input.in{width:100%;border:1.5px solid var(--n);background:var(--bg);border-radius:14px;padding:15px 16px;font:500 16px Montserrat,sans-serif;color:var(--t);outline:none;transition:.2s}
+input.in:focus{border-color:var(--k);background:#fff}
+input.in.err{border-color:#c0574a}
+.lgpd{display:flex;gap:10px;align-items:flex-start;font-size:11.5px;line-height:1.5;color:#8b7368;margin-top:16px}
+.lgpd input{accent-color:var(--k);width:18px;height:18px;margin-top:1px;flex:none}
+.msg-err{color:#c0574a;font-size:12px;margin-top:10px;min-height:16px}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;border:0;border-radius:16px;padding:17px;font:700 13px Montserrat,sans-serif;letter-spacing:2.5px;cursor:pointer;transition:.15s}
+.btn:active{transform:scale(.98)}
+.btn-k{background:var(--k);color:#fff;box-shadow:0 10px 22px -10px rgba(166,124,104,.9)}
+.btn-o{background:#fff;color:var(--k);border:1.5px solid var(--k)}
+.gate-foot{text-align:center;font-size:10.5px;letter-spacing:2px;color:#a88f83;margin-top:22px}
+
+/* LISTA */
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.ola{margin:26px 0 6px;font-size:15px;color:#7d655a}
+.ola b{color:var(--k)}
+.sub{font-size:13px;line-height:1.5;color:#8b7368}
+.cat{margin-top:26px}
+.cat h3{font-size:11px;letter-spacing:3.5px;font-weight:700;color:var(--k);margin:0 4px 12px;display:flex;align-items:center;gap:10px}
+.cat h3::after{content:"";flex:1;height:1px;background:var(--n)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.svc{position:relative;background:#fff;border:1.5px solid transparent;border-radius:20px;padding:16px 14px 14px;min-height:108px;text-align:left;cursor:pointer;font:inherit;color:inherit;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 8px 22px -16px rgba(94,70,59,.45);transition:.18s}
+.svc:active{transform:scale(.97)}
+.svc .ic{width:34px;height:34px;border-radius:12px;background:var(--n2);display:flex;align-items:center;justify-content:center;font-size:17px}
+.svc .nm{font-size:13.5px;font-weight:600;line-height:1.3;margin-top:12px;color:var(--t)}
+.svc .go{position:absolute;top:14px;right:14px;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--n);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--k)}
+.svc.seen{border-color:var(--n)}
+.svc.fav{border-color:var(--k);background:linear-gradient(160deg,#fff 55%,#F7EEE9)}
+.svc.fav .go{background:var(--k);border-color:var(--k);color:#fff}
+.svc.wide{grid-column:1/-1;min-height:auto}
+.metodo{grid-column:1/-1;background:var(--k);color:#fff;border-radius:22px;padding:22px 20px;text-align:left;border:0;cursor:pointer;font:inherit;position:relative;overflow:hidden;box-shadow:0 14px 28px -14px rgba(166,124,104,.95)}
+.metodo small{font-size:10px;letter-spacing:4px;opacity:.8;font-weight:500}
+.metodo .l1{font-size:30px;font-weight:800;line-height:1;margin-top:6px}
+.metodo .l2{font-size:28px;font-weight:300;line-height:1}
+.metodo .tag{position:absolute;top:18px;right:18px;font-size:9.5px;letter-spacing:2.5px;font-weight:700;background:rgba(255,255,255,.18);padding:6px 11px;border-radius:30px}
+.metodo .ver{margin-top:14px;font-size:11px;letter-spacing:2.5px;font-weight:600;opacity:.95}
+.metodo.fav{outline:3px solid var(--n);outline-offset:-3px}
+
+.cta-box{margin-top:30px;background:#fff;border-radius:22px;padding:22px 20px;text-align:center;box-shadow:0 8px 22px -16px rgba(94,70,59,.45)}
+.cta-box h4{font-size:11px;letter-spacing:3.5px;color:var(--k);margin-bottom:6px}
+.cta-box p{font-size:13px;color:#8b7368;margin-bottom:16px;line-height:1.5}
+
+/* BARRA DO USUÁRIO */
+#ubar{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(254,250,246,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--n)}
+#ubar .in2{max-width:520px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.av{width:38px;height:38px;border-radius:50%;background:var(--k);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:15px;flex:none}
+.ui{flex:1;min-width:0}
+.ui b{display:block;font-size:13.5px;color:var(--t)}
+.ui span{font-size:12px;color:#8b7368}
+.cnt{font-size:10px;letter-spacing:1.5px;font-weight:700;color:var(--k);background:var(--n2);padding:7px 10px;border-radius:20px;white-space:nowrap}
+.sair{border:0;background:none;color:#a88f83;font:600 11px Montserrat;text-decoration:underline;cursor:pointer;padding:4px}
+
+/* DETALHE */
+#sheet{position:fixed;inset:0;z-index:60;display:none}
+#sheet.on{display:block}
+#sheet .bk{position:absolute;inset:0;background:rgba(60,42,34,.38);animation:fd .2s}
+#sheet .pn{position:absolute;left:0;right:0;bottom:0;max-height:90vh;overflow:auto;background:var(--bg);border-radius:28px 28px 0 0;padding:12px 22px calc(24px + env(safe-area-inset-bottom));animation:up .28s cubic-bezier(.2,.8,.2,1);max-width:560px;margin:0 auto}
+.grab{width:44px;height:5px;border-radius:5px;background:var(--n);margin:0 auto 18px}
+.pn .cg{font-size:10.5px;letter-spacing:3px;font-weight:700;color:var(--k)}
+.pn h2{font-size:25px;font-weight:700;color:var(--t);line-height:1.2;margin:8px 0 12px}
+.pn .ds{font-size:14px;line-height:1.65;color:#7d655a}
+.bn{margin:18px 0 6px;background:#fff;border-radius:18px;padding:16px 18px}
+.bn h5{font-size:10.5px;letter-spacing:3px;color:var(--k);margin-bottom:10px}
+.bn li{list-style:none;font-size:13.5px;padding:7px 0 7px 26px;position:relative;border-bottom:1px solid var(--n2)}
+.bn li:last-child{border:0}
+.bn li::before{content:"✓";position:absolute;left:0;top:6px;width:18px;height:18px;border-radius:50%;background:var(--n2);color:var(--k);font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.acts{display:grid;gap:10px;margin-top:18px}
+.fav-t{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:4px;border:0;background:none;font:600 12px Montserrat;color:var(--k);padding:10px;cursor:pointer;width:100%}
+.x{position:absolute;top:14px;right:16px;width:34px;height:34px;border-radius:50%;border:0;background:#fff;color:var(--k);font-size:16px;cursor:pointer;box-shadow:0 4px 10px -6px rgba(0,0,0,.3)}
+@keyframes up{from{transform:translateY(100%)}to{transform:none}}
+@keyframes fd{from{opacity:0}}
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--t);color:#fff;font-size:12.5px;padding:11px 18px;border-radius:30px;z-index:80;opacity:0;transition:.25s;pointer-events:none;white-space:nowrap}
+.toast.on{opacity:1}
+.hide{display:none!important}
+</style>
+</head>
+<body>
+
+<!-- ===== PORTÃO: NOME + WHATSAPP ===== -->
+<section id="gate">
+  <div class="wrap">
+    <div class="logo-mask"></div>
+    <div class="brand" style="align-items:center;text-align:center;width:100%">
+      <div class="liza">Liza</div>
+      <div class="est">ESTÉTICA</div>
+    </div>
+    <div class="gate-card">
+      <h2>Conheça nossos tratamentos ✨</h2>
+      <p>Informe seu primeiro nome e WhatsApp para acessar o catálogo completo da Liza Estética.</p>
+      <label class="f" for="gNome">PRIMEIRO NOME</label>
+      <input class="in" id="gNome" autocomplete="given-name" placeholder="Ex.: Ana" maxlength="30">
+      <label class="f" for="gTel">WHATSAPP</label>
+      <input class="in" id="gTel" inputmode="tel" autocomplete="tel" placeholder="(21) 99999-9999" maxlength="15">
+      <label class="lgpd"><input type="checkbox" id="gOk"><span>Autorizo a Liza Estética a entrar em contato comigo pelo WhatsApp sobre os tratamentos que eu visualizar.</span></label>
+      <div class="msg-err" id="gErr"></div>
+      <button class="btn btn-k" id="gBtn" style="margin-top:6px">ACESSAR CATÁLOGO →</button>
+    </div>
+    <div class="gate-foot">🔒 SEUS DADOS FICAM SÓ COM A LIZA</div>
+  </div>
+</section>
+
+<!-- ===== CATÁLOGO ===== -->
+<main class="wrap" id="app">
+  <div class="top">
+    <div class="brand"><div class="liza">Liza</div><div class="est">ESTÉTICA</div></div>
+    <span class="pill" style="margin-top:6px">CATÁLOGO</span>
+  </div>
+  <div class="ola">Olá, <b id="olaNome">—</b> 💛</div>
+  <div class="sub">Toque nos tratamentos que você tem interesse para conhecer os benefícios.</div>
+  <div id="lista"></div>
+  <div class="cta-box">
+    <h4>AGENDE SUA AVALIAÇÃO</h4>
+    <p>Ficou com dúvida? Fale direto com a Liza.</p>
+    <button class="btn btn-k" onclick="falar(null)">💬 CHAMAR NO WHATSAPP</button>
+  </div>
+</main>
+
+<!-- ===== BARRA DO USUÁRIO ===== -->
+<div id="ubar" class="hide">
+  <div class="in2">
+    <div class="av" id="uAv">A</div>
+    <div class="ui"><b id="uNome">—</b><span id="uTel">—</span></div>
+    <div class="cnt" id="uCnt">♡ 0</div>
+    <button class="sair" onclick="sair()">Não é você?</button>
+  </div>
+</div>
+
+<!-- ===== DETALHE ===== -->
+<div id="sheet">
+  <div class="bk" onclick="fechar()"></div>
+  <div class="pn">
+    <button class="x" onclick="fechar()">✕</button>
+    <div class="grab"></div>
+    <div class="cg" id="dCat"></div>
+    <h2 id="dNome"></h2>
+    <div class="ds" id="dDesc"></div>
+    <div class="bn"><h5>BENEFÍCIOS</h5><ul id="dBen"></ul></div>
+    <div class="acts">
+      <button class="btn btn-k" id="dWhats">💬 QUERO SABER MAIS</button>
+      <button class="fav-t" id="dFav">♡ Marcar como favorito</button>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ================= CONFIG ================= */
+const CFG = {
+  WHATS: '5521992060068',
+  SUPA_URL: 'https://clxtlgkzsdzmqbvhkwft.supabase.co',              // preencher na integração
+  SUPA_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNseHRsZ2t6c2R6bXFidmhrd2Z0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5OTI4NTksImV4cCI6MjA5MzU2ODg1OX0.QqjhvC5Y9yp7RohU4oPo5L5lx4IIWnGa8OmIdyuD4Ag'               // anon key (só chama RPC)
+};
+const CANAL = new URLSearchParams(location.search).get('canal') || 'direto';
+
+/* ================= SERVIÇOS (demo — depois vem do Supabase) ================= */
+const SERVICOS = [
+ {id:'gordura',cat:'ESTÉTICA CORPORAL',ic:'✦',nome:'Gordura Localizada',desc:'Protocolo que atua na redução de medidas em áreas como abdômen, flancos e culotes, ajudando a definir o contorno corporal.',ben:['Redução de medidas','Contorno mais definido','Resultados visíveis nas primeiras semanas']},
+ {id:'flacidez',cat:'ESTÉTICA CORPORAL',ic:'◇',nome:'Tratamento para Flacidez',desc:'Estimula a firmeza da pele, devolvendo sustentação e um aspecto mais jovem e tonificado.',ben:['Pele mais firme','Melhora da textura','Aparência tonificada']},
+ {id:'diastase',cat:'ESTÉTICA CORPORAL',ic:'◎',nome:'Diástase Abdominal',desc:'Tratamento voltado para a região abdominal, ideal no pós-gestação, para melhorar firmeza e aparência da barriga.',ben:['Abdômen mais firme','Melhora da postura abdominal','Ideal no pós-parto']},
+ {id:'celulite',cat:'ESTÉTICA CORPORAL',ic:'❋',nome:'Tratamento para Celulite',desc:'Melhora o aspecto “casca de laranja”, estimulando a circulação e deixando a pele mais lisa e uniforme.',ben:['Pele mais lisa','Melhora da circulação','Redução dos furinhos']},
+ {id:'estrias',cat:'ESTÉTICA CORPORAL',ic:'≋',nome:'Tratamento para Estrias',desc:'Estimula a renovação da pele, suavizando a aparência e a coloração das estrias.',ben:['Estrias mais suaves','Renovação da pele','Tom mais uniforme']},
+ {id:'gluteos',cat:'ESTÉTICA CORPORAL',ic:'♡',nome:'Protocolo para Glúteos',desc:'Protocolo para levantar, tonificar e dar mais volume aparente ao bumbum.',ben:['Efeito lifting','Mais firmeza','Contorno valorizado']},
+ {id:'peim',cat:'ESTÉTICA CORPORAL',ic:'⁂',nome:'PEIM (Microvasos)',desc:'Tratamento para os microvasos (vasinhos) aparentes nas pernas, deixando a pele mais uniforme.',ben:['Redução dos vasinhos','Pernas mais bonitas','Procedimento rápido']},
+ {id:'metodo',cat:'EXCLUSIVO',metodo:true,nome:'Método Liza Define',desc:'O método exclusivo da Liza, que combina técnicas para redução de medidas e definição corporal. Resultados esperados de 45 a 90 dias, com evolução já nas primeiras semanas.',ben:['Protocolo personalizado','Combinação de técnicas','Acompanhamento da evolução']},
+ {id:'lipofuncional',cat:'MASSAGENS',ic:'✋',nome:'Massagem Lipofuncional',desc:'Massagem que auxilia na redução de medidas e na eliminação de líquidos, modelando o corpo.',ben:['Redução de medidas','Menos inchaço','Corpo modelado']},
+ {id:'modeladora',cat:'MASSAGENS',ic:'〰',nome:'Massagem Modeladora',desc:'Movimentos firmes que ajudam a remodelar o contorno corporal e melhorar a aparência da pele.',ben:['Contorno definido','Melhora da circulação','Pele mais bonita']},
+ {id:'drenagem',cat:'MASSAGENS',ic:'💧',nome:'Drenagem Linfática',desc:'Técnica suave que estimula a eliminação de líquidos e toxinas, reduzindo o inchaço.',ben:['Menos retenção de líquido','Sensação de leveza','Bem-estar']},
+ {id:'limpeza',cat:'ESTÉTICA FACIAL',ic:'✧',nome:'Limpeza de Pele',desc:'Remove impurezas, cravos e células mortas, deixando a pele limpa, renovada e preparada.',ben:['Poros desobstruídos','Pele renovada','Viço natural']},
+ {id:'hydra',cat:'ESTÉTICA FACIAL',ic:'✺',nome:'Hydra Glow',desc:'Hidratação profunda que devolve brilho, maciez e luminosidade à pele do rosto.',ben:['Hidratação profunda','Efeito glow','Pele macia']},
+ {id:'laser',cat:'DEPILAÇÃO',ic:'✶',nome:'Depilação a Laser',desc:'Redução dos pelos de forma duradoura, com mais praticidade no dia a dia.',ben:['Resultado duradouro','Menos foliculite','Praticidade']}
+];
+const ORDEM = ['ESTÉTICA CORPORAL','EXCLUSIVO','MASSAGENS','ESTÉTICA FACIAL','DEPILAÇÃO'];
+
+/* ================= ESTADO ================= */
+const LS = 'liza_catalogo';
+let U = carregar();
+function carregar(){ try{ return JSON.parse(localStorage.getItem(LS)) || null }catch(e){ return null } }
+function salvar(){ try{ localStorage.setItem(LS, JSON.stringify(U)) }catch(e){} }
+
+/* ================= REGISTRO (gancho para Supabase) ================= */
+async function registrar(tipo, servico){
+  const ev = {tipo, servico: servico || null, canal: CANAL, em: new Date().toISOString()};
+  console.log('[catalogo]', U && U.nome, ev);
+  // FASE 1: aqui chama a RPC catalogo_evento(lead_id, tipo, servico, canal)
+  if(!CFG.SUPA_URL || !U || !U.leadId) return;
+  try{
+    await fetch(CFG.SUPA_URL + '/rest/v1/rpc/catalogo_evento', {
+      method:'POST',
+      headers:{'apikey':CFG.SUPA_KEY,'Authorization':'Bearer '+CFG.SUPA_KEY,'Content-Type':'application/json'},
+      body: JSON.stringify({p_lead: U.leadId, p_tipo: tipo, p_servico: servico || null, p_canal: CANAL})
+    });
+  }catch(e){}
+}
+async function criarLead(nome, tel){
+  if(!CFG.SUPA_URL) return 'demo-' + tel;
+  const r = await fetch(CFG.SUPA_URL + '/rest/v1/rpc/catalogo_lead', {
+    method:'POST',
+    headers:{'apikey':CFG.SUPA_KEY,'Authorization':'Bearer '+CFG.SUPA_KEY,'Content-Type':'application/json'},
+    body: JSON.stringify({p_nome: nome, p_tel: tel, p_canal: CANAL})
+  });
+  if(!r.ok) throw new Error('lead');
+  return await r.json();
+}
+
+/* ================= PORTÃO ================= */
+const $ = id => document.getElementById(id);
+function mascara(v){
+  v = v.replace(/\D/g,'').slice(0,11);
+  if(v.length > 10) return `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
+  if(v.length > 6)  return `(${v.slice(0,2)}) ${v.slice(2,6)}-${v.slice(6)}`;
+  if(v.length > 2)  return `(${v.slice(0,2)}) ${v.slice(2)}`;
+  return v ? '(' + v : '';
+}
+$('gTel').addEventListener('input', e => e.target.value = mascara(e.target.value));
+$('gBtn').onclick = async () => {
+  const nome = $('gNome').value.trim().split(/\s+/)[0] || '';
+  const tel  = $('gTel').value.replace(/\D/g,'');
+  $('gNome').classList.toggle('err', nome.length < 2);
+  $('gTel').classList.toggle('err', !/^\d{2}9\d{8}$/.test(tel));
+  if(nome.length < 2) return $('gErr').textContent = 'Informe seu primeiro nome.';
+  if(!/^\d{2}9\d{8}$/.test(tel)) return $('gErr').textContent = 'Informe um WhatsApp válido com DDD.';
+  if(!$('gOk').checked) return $('gErr').textContent = 'Marque a autorização para continuar.';
+  $('gErr').textContent = '';
+  $('gBtn').textContent = 'ABRINDO…';
+  const nomeF = nome.charAt(0).toUpperCase() + nome.slice(1).toLowerCase();
+  let leadId = null;
+  try{ leadId = await criarLead(nomeF, tel) }catch(e){}
+  U = {nome: nomeF, tel, leadId, vistos: [], favs: []};
+  salvar();
+  entrar(true);
+};
+
+function entrar(primeira){
+  $('gate').classList.add('hide');
+  $('ubar').classList.remove('hide');
+  $('olaNome').textContent = U.nome;
+  $('uNome').textContent = U.nome;
+  $('uTel').textContent = mascara(U.tel);
+  $('uAv').textContent = U.nome.charAt(0);
+  render();
+  registrar(primeira ? 'cadastro' : 'retorno');
+}
+function sair(){
+  if(!confirm('Sair e entrar com outro nome?')) return;
+  localStorage.removeItem(LS); U = null; location.reload();
+}
+
+/* ================= LISTA ================= */
+function render(){
+  let h = '';
+  ORDEM.forEach(cat => {
+    const itens = SERVICOS.filter(s => s.cat === cat);
+    if(!itens.length) return;
+    h += `<div class="cat"><h3>${cat}</h3><div class="grid">`;
+    itens.forEach((s, i) => {
+      const cls = (U.favs.includes(s.id) ? ' fav' : '') + (U.vistos.includes(s.id) ? ' seen' : '');
+      if(s.metodo){
+        h += `<button class="metodo${cls}" onclick="abrir('${s.id}')"><span class="tag">EXCLUSIVO</span><small>MÉTODO</small><div class="l1">Liza</div><div class="l2">Define</div><div class="ver">CONHECER O MÉTODO →</div></button>`;
+      } else {
+        const wide = (itens.length % 2 === 1 && i === itens.length - 1) ? ' wide' : '';
+        h += `<button class="svc${cls}${wide}" onclick="abrir('${s.id}')"><span class="go">${U.favs.includes(s.id) ? '♥' : '→'}</span><span class="ic">${s.ic}</span><span class="nm">${s.nome}</span></button>`;
+      }
+    });
+    h += `</div></div>`;
+  });
+  $('lista').innerHTML = h;
+  $('uCnt').textContent = '♡ ' + U.favs.length + (U.favs.length === 1 ? ' FAVORITO' : ' FAVORITOS');
+}
+
+/* ================= DETALHE ================= */
+let atual = null;
+function abrir(id){
+  const s = SERVICOS.find(x => x.id === id); atual = s;
+  $('dCat').textContent = s.cat;
+  $('dNome').textContent = s.nome;
+  $('dDesc').textContent = s.desc;
+  $('dBen').innerHTML = s.ben.map(b => `<li>${b}</li>`).join('');
+  atualizaFav();
+  $('sheet').classList.add('on');
+  document.body.style.overflow = 'hidden';
+  if(!U.vistos.includes(id)){ U.vistos.push(id); salvar(); }
+  registrar('abriu', id);
+}
+function fechar(){ $('sheet').classList.remove('on'); document.body.style.overflow = ''; render(); }
+function atualizaFav(){
+  const on = U.favs.includes(atual.id);
+  $('dFav').textContent = on ? '♥ Favorito (toque para remover)' : '♡ Marcar como favorito';
+}
+$('dFav').onclick = () => {
+  const i = U.favs.indexOf(atual.id);
+  if(i < 0){ U.favs.push(atual.id); registrar('favoritou', atual.id); toast('♥ Adicionado aos favoritos'); }
+  else { U.favs.splice(i, 1); registrar('desfavoritou', atual.id); }
+  salvar(); atualizaFav(); render();
+};
+$('dWhats').onclick = () => falar(atual);
+function falar(s){
+  registrar('whatsapp', s ? s.id : null);
+  const txt = s
+    ? `Oi Liza! Sou a ${U.nome}, vi no catálogo e tenho interesse em *${s.nome}*. Pode me passar mais informações?`
+    : `Oi Liza! Sou a ${U.nome}, vi o catálogo e queria agendar uma avaliação.`;
+  window.open(`https://wa.me/${CFG.WHATS}?text=${encodeURIComponent(txt)}`, '_blank');
+}
+function toast(t){ const el = $('toast'); el.textContent = t; el.classList.add('on'); setTimeout(() => el.classList.remove('on'), 1800); }
+
+/* ================= INÍCIO ================= */
+if(U && U.nome && U.tel) entrar(false);
+</script>
+</body>
+</html>
