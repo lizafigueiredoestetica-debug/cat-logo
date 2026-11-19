@@ -209,6 +209,7 @@ function salvar(){ try{ localStorage.setItem(LS, JSON.stringify(U)) }catch(e){} 
 
 /* ================= REGISTRO (gancho para Supabase) ================= */
 async function registrar(tipo, servico){
+  if(servico){ const sx = SERVICOS.find(x => x.id === servico); if(sx) servico = sx.nome; }
   const ev = {tipo, servico: servico || null, canal: CANAL, em: new Date().toISOString()};
   console.log('[catalogo]', U && U.nome, ev);
   // FASE 1: aqui chama a RPC catalogo_evento(lead_id, tipo, servico, canal)
